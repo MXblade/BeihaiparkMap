@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.w3school.com.cn" targetNamespace="http://www.w3school.com.cn" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="park">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="view_spot" maxOccurs="50">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="history" type="xs:string"/>
+							<xs:element name="description" type="xs:string"/>
+							<xs:element name="location">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="x" type="xs:integer"/>
+										<xs:element name="y" type="xs:integer"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
