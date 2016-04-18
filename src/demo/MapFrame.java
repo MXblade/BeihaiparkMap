@@ -1,4 +1,4 @@
-package demo;
+ï»¿package demo;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
@@ -27,16 +27,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class MapFrame extends JFrame{
-	//»ñÈ¡ÆÁÄ»µÄ¿í¶ÈºÍ¸ß¶È
+	//è·å–å±å¹•çš„å®½åº¦å’Œé«˜åº¦
 	int width = Toolkit.getDefaultToolkit().getScreenSize().width;
 	int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-	int Px,Py;//ÓÃÀ´´æ´¢µ±Ç°Ñ¡ÖĞµãµÄ×ø±ê
+	int Px,Py;//ç”¨æ¥å­˜å‚¨å½“å‰é€‰ä¸­ç‚¹çš„åæ ‡
 	
 	Element element = null;
-	// ¿ÉÒÔÊ¹ÓÃÏà¶ÔÂ·¾¶
+	// å¯ä»¥ä½¿ç”¨ç›¸å¯¹è·¯å¾„
 	File mapxml = new File("xml/BHpark.xml");
 
-	// documentBuilderÎª³éÏó²»ÄÜÖ±½ÓÊµÀı»¯(½«XMLÎÄ¼ş×ª»»ÎªDOMÎÄ¼ş)
+	// documentBuilderä¸ºæŠ½è±¡ä¸èƒ½ç›´æ¥å®ä¾‹åŒ–(å°†XMLæ–‡ä»¶è½¬æ¢ä¸ºDOMæ–‡ä»¶)
 	DocumentBuilder db = null;
 	DocumentBuilderFactory dbf = null;
 	NodeList childNodes = null;
@@ -44,18 +44,18 @@ public class MapFrame extends JFrame{
 	
 	public MapFrame() {
 		
-		//Éè¶¨½çÃæµÄ¿í¶ÈºÍ¸ß¶È
+		//è®¾å®šç•Œé¢çš„å®½åº¦å’Œé«˜åº¦
 		int Framewidth = 770;
 		int Frameheight = 800;
-		this.setTitle("±±º£¹«Ô°¾°µã²éÑ¯");
+		this.setTitle("åŒ—æµ·å…¬å›­æ™¯ç‚¹æŸ¥è¯¢");
 		this.setSize(Framewidth, Frameheight);
-		//Éè¶¨½çÃæµÄÎ»ÖÃ
+		//è®¾å®šç•Œé¢çš„ä½ç½®
 		this.setLocation((width-Framewidth)/2, (height-Frameheight)/2);
-		//ÉèÖÃ´°ÌåµÄ¹Ø±Õ·½Ê½Îª¹Ø±Õ³ÌĞò×Ô¶¯½áÊø
+		//è®¾ç½®çª—ä½“çš„å…³é—­æ–¹å¼ä¸ºå…³é—­ç¨‹åºè‡ªåŠ¨ç»“æŸ
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
-		//¶¨ÒåµØÍ¼Panel£¬½«µØÍ¼ÏÔÊ¾³öÀ´
+		//å®šä¹‰åœ°å›¾Panelï¼Œå°†åœ°å›¾æ˜¾ç¤ºå‡ºæ¥
 		JPanel mainPanel = new JPanel(){
 			@Override  
 	        protected void paintComponent(Graphics g) {  
@@ -65,32 +65,32 @@ public class MapFrame extends JFrame{
 	        } 
 		};
 		
-		//¶¨ÒåÓÒ²àPanelºÍÎÄ±¾ÏÔÊ¾¿ò
+		//å®šä¹‰å³ä¾§Panelå’Œæ–‡æœ¬æ˜¾ç¤ºæ¡†
 		JPanel rightPanel = new JPanel();
-		JTextArea text = new JTextArea("°üº¬µÄ¾°µã£º" +"\n"+ "±±º£¹«Ô°",39, 20);
+		JTextArea text = new JTextArea("åŒ…å«çš„æ™¯ç‚¹ï¼š" +"\n"+ "åŒ—æµ·å…¬å›­",39, 20);
 		text.setEditable(false);
 
-		//¶¨Òåµ×¶ËPanelºÍÑ¡ÔñĞÅÏ¢
+		//å®šä¹‰åº•ç«¯Panelå’Œé€‰æ‹©ä¿¡æ¯
 		JPanel belowPanel = new JPanel();
-		JButton buttonD = new JButton("È·¶¨");
-		JLabel labelX = new JLabel("ÇëÑ¡ÔñµØÍ¼ÖĞµÄÒ»µã      X:  ",JLabel.RIGHT);
+		JButton buttonD = new JButton("ç¡®å®š");
+		JLabel labelX = new JLabel("è¯·é€‰æ‹©åœ°å›¾ä¸­çš„ä¸€ç‚¹      X:  ",JLabel.RIGHT);
 		JLabel labelY = new JLabel("Y:  ",JLabel.RIGHT);
-		JLabel labelDt = new JLabel("ÇëÑ¡Ôñ·½Ïò£º",JLabel.RIGHT);
-		JTextField textlineX = new JTextField("X×ø±ê",4);
-		JTextField textlineY = new JTextField("Y×ø±ê",4);
+		JLabel labelDt = new JLabel("è¯·é€‰æ‹©æ–¹å‘ï¼š",JLabel.RIGHT);
+		JTextField textlineX = new JTextField("Xåæ ‡",4);
+		JTextField textlineY = new JTextField("Yåæ ‡",4);
 		textlineX.setEditable(false);
 		textlineY.setEditable(false);
 		buttonD.setEnabled(false);
-		//ÉèÖÃ×éºÏ¿òµÄÊôĞÔ
+		//è®¾ç½®ç»„åˆæ¡†çš„å±æ€§
 		JComboBox<String> direction = new JComboBox<>();
-		direction.addItem("±±Ãæ(ÉÏ)");
-		direction.addItem("ÄÏÃæ(ÏÂ)");
-		direction.addItem("Î÷Ãæ(×ó)");
-		direction.addItem("¶«Ãæ(ÓÒ)");
+		direction.addItem("åŒ—é¢(ä¸Š)");
+		direction.addItem("å—é¢(ä¸‹)");
+		direction.addItem("è¥¿é¢(å·¦)");
+		direction.addItem("ä¸œé¢(å³)");
 		
 				
  
-		//Ìí¼Ó3¸öPanelºÍÀïÃæµÄ¿Ø¼ş
+		//æ·»åŠ 3ä¸ªPanelå’Œé‡Œé¢çš„æ§ä»¶
 		getContentPane().add(mainPanel,BorderLayout.CENTER);
 		getContentPane().add(belowPanel,BorderLayout.SOUTH);
 		getContentPane().add(rightPanel,BorderLayout.EAST);
@@ -104,24 +104,24 @@ public class MapFrame extends JFrame{
 		belowPanel.add(buttonD);
 		
 
-		//Éè¶¨½çÃæ¿ÉÏÔÊ¾
+		//è®¾å®šç•Œé¢å¯æ˜¾ç¤º
 		this.setVisible(true);
 
-		//¶ÔµØÍ¼panelÌí¼ÓmouseLinsener£¬»ñÈ¡µã»÷µãµÄ×ø±ê£¬½«×ø±êÏÔÊ¾ÔÚtextlineXºÍtextlineYÖĞ
+		//å¯¹åœ°å›¾panelæ·»åŠ mouseLinsenerï¼Œè·å–ç‚¹å‡»ç‚¹çš„åæ ‡ï¼Œå°†åæ ‡æ˜¾ç¤ºåœ¨textlineXå’ŒtextlineYä¸­
 		mainPanel.addMouseListener(new MouseListener() {
 			
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				
 			}
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				if((e.getX()>=10) && (e.getX()<=510) && (e.getY()>=10) && (e.getY()<=710))
 				{
-					//ÔÚmainpaenlÖĞÍ¼Æ¬µÄÆğÊ¼Î»ÖÃÎª£¨10£¬10£©£¬¶ÔÍ¼ÖĞµÄ×ø±êµãÀ´Ëµ£¬ĞèÒª¶Ôµã»÷ËùµÃµÄµã½øĞĞĞŞÕı
+					//åœ¨mainpaenlä¸­å›¾ç‰‡çš„èµ·å§‹ä½ç½®ä¸ºï¼ˆ10ï¼Œ10ï¼‰ï¼Œå¯¹å›¾ä¸­çš„åæ ‡ç‚¹æ¥è¯´ï¼Œéœ€è¦å¯¹ç‚¹å‡»æ‰€å¾—çš„ç‚¹è¿›è¡Œä¿®æ­£
 					Px = e.getX() - 10;
 					Py = e.getY() - 10;
 					textlineX.setText(String.valueOf(Px));
@@ -132,52 +132,52 @@ public class MapFrame extends JFrame{
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				
 			}
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 				
 			}
 		});
 		
-		//Ìí¼Óbutton¡°È·¶¨¡±µÄµã»÷ÊÂ¼ş
+		//æ·»åŠ buttonâ€œç¡®å®šâ€çš„ç‚¹å‡»äº‹ä»¶
 		buttonD.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-				//»ñÈ¡directionµÄÑ¡ÔñÖµ,0ÎªÉÏ£¬1ÎªÏÂ£¬2Îª×ó£¬3ÎªÓÒ
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
+				//è·å–directionçš„é€‰æ‹©å€¼,0ä¸ºä¸Šï¼Œ1ä¸ºä¸‹ï¼Œ2ä¸ºå·¦ï¼Œ3ä¸ºå³
 				int drn = direction.getSelectedIndex();
-				//½«·ûºÏÌõ¼şµÄ¾°µãµÄÄÚÈİÌí¼Óµ½tempÖĞ£¬×îºóÍ³Ò»ÏÔÊ¾ÔÚtextÖĞ
-				String temp = "°üº¬µÄ¾°µã£º\n";
-				//ÓÃÓÚ´æ´¢Ã¿Ò»¸ö¾°µãµÄÎ»ÖÃ×ø±ê
+				//å°†ç¬¦åˆæ¡ä»¶çš„æ™¯ç‚¹çš„å†…å®¹æ·»åŠ åˆ°tempä¸­ï¼Œæœ€åç»Ÿä¸€æ˜¾ç¤ºåœ¨textä¸­
+				String temp = "åŒ…å«çš„æ™¯ç‚¹ï¼š\n";
+				//ç”¨äºå­˜å‚¨æ¯ä¸€ä¸ªæ™¯ç‚¹çš„ä½ç½®åæ ‡
 				int x = 0;
 				int y = 0;
-				//ÓÃÓÚ´æ´¢Ã¿Ò»¸ö¾°µãÃû×Ö
+				//ç”¨äºå­˜å‚¨æ¯ä¸€ä¸ªæ™¯ç‚¹åå­—
 				String name = null;
 				
 				
-				//¶ÁÈ¡xml¶ÔÓ¦½Úµã
+				//è¯»å–xmlå¯¹åº”èŠ‚ç‚¹
 				try {
-					// ·µ»ØdocumentBuilderFactory¶ÔÏó
+					// è¿”å›documentBuilderFactoryå¯¹è±¡
 					dbf = DocumentBuilderFactory.newInstance();
-					// ·µ»Ødb¶ÔÏóÓÃdocumentBuilderFatory¶ÔÏó»ñµÃ·µ»ØdocumentBuildr¶ÔÏó
+					// è¿”å›dbå¯¹è±¡ç”¨documentBuilderFatoryå¯¹è±¡è·å¾—è¿”å›documentBuildrå¯¹è±¡
 					db = dbf.newDocumentBuilder();
 					
-					// µÃµ½Ò»¸öDOM²¢·µ»Ø¸ødocument¶ÔÏó
+					// å¾—åˆ°ä¸€ä¸ªDOMå¹¶è¿”å›ç»™documentå¯¹è±¡
 					Document dt = db.parse(mapxml);
-					// µÃµ½Ò»¸öelment¸ùÔªËØ
+					// å¾—åˆ°ä¸€ä¸ªelmentæ ¹å…ƒç´ 
 					element = dt.getDocumentElement();
-					// »ñµÃ¸ùÔªËØÏÂµÄ×Ó½Úµã
+					// è·å¾—æ ¹å…ƒç´ ä¸‹çš„å­èŠ‚ç‚¹
 					childNodes = element.getChildNodes();
 
 				}
@@ -186,25 +186,25 @@ public class MapFrame extends JFrame{
 				}
 				 
 				 
-				// ±éÀúÕâĞ©×Ó½Úµã
+				// éå†è¿™äº›å­èŠ‚ç‚¹
 				for (int i = 0; i < childNodes.getLength(); i++) {
-					// »ñµÃÃ¿¸ö¶ÔÓ¦Î»ÖÃiµÄ½áµã
+					// è·å¾—æ¯ä¸ªå¯¹åº”ä½ç½®içš„ç»“ç‚¹
 					Node node1 = childNodes.item(i);
 					if ("view_spot".equals(node1.getNodeName())) {
-						// »ñµÃ<view_spot>ÏÂµÄ½Úµã
+						// è·å¾—<view_spot>ä¸‹çš„èŠ‚ç‚¹
 						NodeList nodeDetail = node1.getChildNodes();
-						// ±éÀú<view_spot>ÏÂµÄ½Úµã
+						// éå†<view_spot>ä¸‹çš„èŠ‚ç‚¹
 						for (int j = 0; j < nodeDetail.getLength(); j++) {
-							// »ñµÃ<view_spot>ÔªËØÃ¿Ò»¸ö½Úµã
+							// è·å¾—<view_spot>å…ƒç´ æ¯ä¸€ä¸ªèŠ‚ç‚¹
 							Node detail = nodeDetail.item(j);
-							if ("name".equals(detail.getNodeName())) // Êä³ö¾°µãÃû³Æ
+							if ("name".equals(detail.getNodeName())) // è¾“å‡ºæ™¯ç‚¹åç§°
 								name = detail.getTextContent();
-							else if ("location".equals(detail.getNodeName())) // Êä³öpass
+							else if ("location".equals(detail.getNodeName())) // è¾“å‡ºpass
 							{
-								//»ñµÃ<location>ÏÂµÄ½Úµã
+								//è·å¾—<location>ä¸‹çš„èŠ‚ç‚¹
 								NodeList nodeDetailXY = detail.getChildNodes();
 								
-								//±éÀú<location>ÏÂµÄ½Úµã
+								//éå†<location>ä¸‹çš„èŠ‚ç‚¹
 								for(int k = 0; k < nodeDetailXY.getLength(); k++)
 								{
 									
@@ -215,10 +215,10 @@ public class MapFrame extends JFrame{
 										y = Integer.parseInt(detalxy.getTextContent());
 								}
 								
-								//ÅĞ¶Ï¾°µãÊÇ·ñÔÚÊÓÒ°ÄÚ£¬Í¨¹ı½Ç¶ÈºÍ¾àÀë
+								//åˆ¤æ–­æ™¯ç‚¹æ˜¯å¦åœ¨è§†é‡å†…ï¼Œé€šè¿‡è§’åº¦å’Œè·ç¦»
 								if(isView(x, y, drn) && (distance(x,y) <= 550))
 								{
-									//½«·ûºÏÌõ¼şµÄ½ÚµãÌí¼ÓµÄtempÖĞ
+									//å°†ç¬¦åˆæ¡ä»¶çš„èŠ‚ç‚¹æ·»åŠ çš„tempä¸­
 									temp = temp + name +": x:" + x + "   y:" + y +"\n";
 								}
 								
@@ -228,14 +228,14 @@ public class MapFrame extends JFrame{
 					}
 
 				}
-				//ÔÚtextÖĞÏÔÊ¾³ö±éÀú³ö·ûºÏÌõ¼şµÄÄÚÈİ
+				//åœ¨textä¸­æ˜¾ç¤ºå‡ºéå†å‡ºç¬¦åˆæ¡ä»¶çš„å†…å®¹
 				text.setText(temp);
 			}
 		});
 		
 	}
 	
-	//ÅĞ¶Ï¾°µãÊÇ·ñÔÚÊÓÒ°½Ç¶È·¶Î§ÄÚ
+	//åˆ¤æ–­æ™¯ç‚¹æ˜¯å¦åœ¨è§†é‡è§’åº¦èŒƒå›´å†…
 	public boolean isView(int x, int y, int direction)
 	{
 		boolean isView = false;
@@ -287,7 +287,7 @@ public class MapFrame extends JFrame{
 		return isView;
 	}
 	
-	//Óëµ±Ç°Ñ¡ÖĞµãµÄ¾àÀë
+	//ä¸å½“å‰é€‰ä¸­ç‚¹çš„è·ç¦»
 	public int distance(int x, int y)
 	{
 		int distance = 0;
@@ -297,7 +297,7 @@ public class MapFrame extends JFrame{
 		return distance;
 	}
 	
-	//Óëµ±Ç°Ñ¡ÖĞµãµÄĞ±ÂÊ
+	//ä¸å½“å‰é€‰ä¸­ç‚¹çš„æ–œç‡
 	public double xielv(int x, int y)
 	{
 		double k = 0;
